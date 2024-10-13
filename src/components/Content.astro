@@ -1,0 +1,43 @@
+---
+import Card from "./Card.astro"
+
+// datos
+
+const languages = [
+  { imgSrc: "logos/HTML.png", language: "HTML" },
+  { imgSrc: "logos/CSS.png", language: "CSS" },
+  { imgSrc: "logos/python.png", language: "Python" }
+]
+---
+
+<main>
+  <div class="title">
+    <h1>Lenguajes de programación</h1>
+  </div>
+  <section class="content">
+    {
+      languages.map((lang) => (
+        <Card imgSrc={lang.imgSrc} language={lang.language} />
+      ))
+    }
+  </section>
+</main>
+
+<style>
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .title {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .content {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    text-align: center;
+  }
+</style>
