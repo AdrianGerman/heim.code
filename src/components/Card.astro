@@ -12,8 +12,8 @@ const { language, imgSrc } = Astro.props
     <img src={imgSrc} alt={language} />
     <p>{language}</p>
     <div class="menu-text">
-      <p class="menu-item">Teoría</p>
-      <p class="menu-item">Código</p>
+      <a class="menu-item" href={`/info/${language}`}>Teoría</a>
+      <a class="menu-item">Código</a>
     </div>
   </div>
 </section>
@@ -36,7 +36,7 @@ const { language, imgSrc } = Astro.props
     padding: 2rem 2rem 0 2rem;
   }
 
-  .card p {
+  .card a {
     margin: 0.5rem 0;
   }
 
@@ -55,6 +55,8 @@ const { language, imgSrc } = Astro.props
   }
 
   .menu-item {
+    color: white;
+    text-decoration: none;
     padding: 0.5rem;
   }
 
@@ -66,7 +68,7 @@ const { language, imgSrc } = Astro.props
     border-right: 1px solid #363636;
   }
 
-  .menu-text p {
+  .menu-text a {
     margin: 0;
   }
 </style>

@@ -1,13 +1,9 @@
 ---
 import Card from "./Card.astro"
 
-// datos
+import { languages } from "../data/languages"
 
-const languages = [
-  { imgSrc: "logos/HTML.png", language: "HTML" },
-  { imgSrc: "logos/CSS.png", language: "CSS" },
-  { imgSrc: "logos/python.png", language: "Python" }
-]
+// datos
 ---
 
 <main>
@@ -27,6 +23,7 @@ const languages = [
   main {
     max-width: 1000px;
     margin: 0 auto;
+    margin-bottom: 6rem;
   }
   .title {
     text-align: center;
