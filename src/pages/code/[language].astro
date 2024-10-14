@@ -22,10 +22,10 @@ if (!selectedLanguage) {
 
 // Importar dinámicamente el archivo Markdown
 // Nota: Las importaciones deben ser estáticas en Astro, por lo que importamos todas y seleccionamos
-import HTMLCode from "../../content/html.md"
-import CSSCode from "../../content/css.md"
-import PythonCode from "../../content/python.md"
-import ReactCode from "../../content/react.md"
+import HTMLCode from "../../content/code/html.md"
+import CSSCode from "../../content/code/css.md"
+import PythonCode from "../../content/code/python.md"
+import ReactCode from "../../content/code/react.md"
 
 const markdownComponents = {
   HTML: HTMLCode,
