@@ -1,0 +1,43 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import { languages } from "../../data/languages"
+
+export async function getStaticPaths() {
+  return languages.map((lang) => ({
+    params: { language: lang.language }
+  }))
+}
+
+const { language } = Astro.params
+
+const selectedLanguage = languages.find((lang) => lang.language === language)
+
+if (!selectedLanguage) {
+  Astro.redirect("/404")
+}
+---
+
+<Layout
+  title={selectedLanguage.title}
+  description={selectedLanguage.description}
+>
+  <main>
+    <h1>{selectedLanguage.title}</h1>
+    <img src={selectedLanguage.imgSrc} alt={selectedLanguage.title} />
+    <p>{selectedLanguage.description}</p>
+    <div class="content">
+      {selectedLanguage.content}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 1rem;
+  }
+  img {
+    margin: 0 auto;
+    width: 100px;
+    object-fit: contain;
+  }
+</style>

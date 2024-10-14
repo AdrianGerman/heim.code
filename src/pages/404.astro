@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout title="404 not found" description="404 error">
+  <div class="error">
+    <h1>Esta página no existe...</h1>
+    <img
+      src="https://midu.dev/images/this-is-fine-404.gif"
+      alt="this-is-fine"
+    />
+  </div>
+</Layout>
+
+<style>
+  .error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+</style>
