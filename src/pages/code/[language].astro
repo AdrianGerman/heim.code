@@ -1,0 +1,72 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import { languages } from "../../data/languages"
+
+// Exportar getStaticPaths para generar rutas dinámicas
+export async function getStaticPaths() {
+  return languages.map((lang) => ({
+    params: { language: lang.language }
+  }))
+}
+
+// Obtener el parámetro de la ruta
+const { language } = Astro.params
+
+// Buscar el lenguaje correspondiente en el array
+const selectedLanguage = languages.find((lang) => lang.language === language)
+
+if (!selectedLanguage) {
+  // Redirigir a la página 404 si el lenguaje no existe
+  Astro.redirect("/404")
+}
+
+// Importar dinámicamente el archivo Markdown
+// Nota: Las importaciones deben ser estáticas en Astro, por lo que importamos todas y seleccionamos
+import HTMLCode from "../../content/html.md"
+import CSSCode from "../../content/css.md"
+import PythonCode from "../../content/python.md"
+import ReactCode from "../../content/react.md"
+
+const markdownComponents = {
+  HTML: HTMLCode,
+  CSS: CSSCode,
+  Python: PythonCode,
+  React: ReactCode
+}
+
+const MarkdownComponent = markdownComponents[selectedLanguage.language]
+---
+
+<Layout
+  title={`Código de ${selectedLanguage.title}`}
+  description={`Ejemplos de código en ${selectedLanguage.title}`}
+>
+  <main>
+    <h1>Código en {selectedLanguage.title}</h1>
+    <MarkdownComponent />
+  </main>
+</Layout>
+
+<style>
+  main {
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+    padding: 20px;
+    background-color: #222;
+    min-height: 100vh;
+  }
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  pre {
+    background-color: #2d2d2d;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  code {
+    color: #dcdcaa;
+  }
+</style>
